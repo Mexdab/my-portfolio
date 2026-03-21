@@ -43,6 +43,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="grain">
 
+        {/* ✅ Fix scroll restoration — always open at top */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `history.scrollRestoration = 'manual'; window.scrollTo(0, 0);`,
+          }}
+        />
+
         {/* Custom Cursor Elements */}
         <div className="cursor-dot" id="cursor-dot" />
         <div className="cursor-ring" id="cursor-ring" />
@@ -73,10 +80,15 @@ export default function RootLayout({ children }) {
           }}
         >
           <p style={{ color: '#9090a8', fontSize: '0.9rem', fontFamily: 'Outfit, sans-serif' }}>
-            © {new Date().getFullYear()} — Designed & Developed by{' '}
+            {/* ✅ Hardcoded year — fixes hydration mismatch */}
+            © 2025 — Designed & Developed by{' '}
             <span style={{ color: '#aaff00', fontWeight: 600 }}>Janarthan S K</span>
           </p>
-          <p style={{ color: '#3a3a4a', fontSize: '0.8rem', fontFamily: 'Outfit, sans-serif', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+          <p style={{
+            color: '#3a3a4a', fontSize: '0.8rem',
+            fontFamily: 'Outfit, sans-serif',
+            letterSpacing: '0.05em', textTransform: 'uppercase',
+          }}>
             Digital Experience Engineer · Available for Worldwide Collaboration
           </p>
         </footer>
