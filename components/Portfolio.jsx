@@ -1,7 +1,34 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { projects } from '@/data/projects';
+
+// Integrated your project data
+export const projects = [
+    {
+        id: 1,
+        title: 'Love Journey',
+        tag: 'Web App · Valentine',
+        description: "A personalized Valentine's experience — enter your partner's details, generate a unique link and share an immersive animated UI card with video transitions.",
+        link: 'https://love-journey-frontend-p1f5.vercel.app',
+        github: 'https://github.com/Mexdab/love-journey-frontend',
+    },
+    {
+        id: 2,
+        title: 'Pavithra Jewellery',
+        tag: 'Web App · E-Commerce',
+        description: 'A jewellery e-commerce platform with admin dashboard — add/update products, live silver rate that auto-updates all prices, and WhatsApp order integration.',
+        link: 'https://pavithra-frontend-plum.vercel.app',
+        github: 'https://github.com/Mexdab/pavithra-frontend',
+    },
+    {
+        id: 3,
+        title: 'SeizureGuard',
+        tag: 'Hackathon · AI / Healthcare',
+        description: 'Real-time pose-based seizure detection using MediaPipe, OpenCV and ML. Analyzes body movements from webcam to detect abnormal patterns and trigger alerts.',
+        link: 'https://drive.google.com/file/d/1zvWntXtPRXsDMZQ7IWxmYurh1La6szxy/view',
+        github: 'https://github.com/wtf4ev/Control-V',
+    },
+];
 
 export default function Portfolio() {
     const [hovered, setHovered] = useState(null);
@@ -43,7 +70,6 @@ export default function Portfolio() {
     // Desktop Rows Observer
     useEffect(() => {
         if (!mounted) return;
-        // Logic fix for React Hook consistency: always use the same dependency array structure
         const observers = rowRefs.current.map((ref, i) => {
             if (!ref) return null;
             const obs = new IntersectionObserver(
@@ -66,7 +92,7 @@ export default function Portfolio() {
             return obs;
         });
         return () => observers.forEach((o) => o?.disconnect());
-    }, [mounted, projects]); // Use 'projects' to keep dependency array size constant
+    }, [mounted]);
 
     // Mobile Rows Observer
     useEffect(() => {
@@ -93,7 +119,7 @@ export default function Portfolio() {
             return obs;
         });
         return () => observers.forEach((o) => o?.disconnect());
-    }, [mounted, projects]); // Use 'projects' to keep dependency array size constant
+    }, [mounted]);
 
     if (!mounted) return (
         <section id="portfolio" style={{ minHeight: '100vh', backgroundColor: '#111118' }} />

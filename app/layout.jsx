@@ -16,6 +16,18 @@ export const metadata = {
     'Frontend Developer',
     'India',
   ],
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+    other: [
+      { url: '/android-chrome-192x192.png', sizes: '192x192' },
+      { url: '/android-chrome-512x512.png', sizes: '512x512' },
+    ],
+  },
   authors: [{ name: 'Janarthan' }],
   creator: 'Janarthan',
   openGraph: {
@@ -80,8 +92,7 @@ export default function RootLayout({ children }) {
           }}
         >
           <p style={{ color: '#9090a8', fontSize: '0.9rem', fontFamily: 'Outfit, sans-serif' }}>
-            {/* ✅ Hardcoded year — fixes hydration mismatch */}
-            © 2025 — Designed & Developed by{' '}
+            © 2026 — Designed & Developed by{' '}
             <span style={{ color: '#aaff00', fontWeight: 600 }}>Janarthan S K</span>
           </p>
           <p style={{
